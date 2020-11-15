@@ -77,3 +77,25 @@ axios({
   url: '/base/buffer',
   data: arr
 })
+
+axios({
+  method: 'post',
+  url: '/base/post',
+  headers: {
+    'content-type': 'application/json;charset=utf-8'
+  },
+  data: {
+    a: 1,
+    b: 2
+  }
+})
+
+// 同时我们发现当 data 是某些类型如 URLSearchParams 的时候，浏览器会自动为请求 header加上合适的 Content-Type
+const paramsString = 'q=URLUtils.searchParams&topic=api'
+const searchParams = new URLSearchParams(paramsString)
+
+axios({
+  method: 'post',
+  url: '/base/post',
+  data: searchParams
+})
