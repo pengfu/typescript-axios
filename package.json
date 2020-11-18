@@ -125,6 +125,8 @@
     "typescript": "^3.0.3",
     "webpack": "^4.28.4",
     "webpack-dev-middleware": "^3.5.0",
-    "webpack-hot-middleware": "^2.24.3"
+    "webpack-hot-middleware": "^2.24.3",
+    "@types/qs": "^6.9.5",
+    "qs": "^6.9.4"
   }
 }

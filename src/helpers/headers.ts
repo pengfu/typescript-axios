@@ -1,4 +1,4 @@
-import { isPlainObject } from './util'
+import { deepMerge, isPlainObject } from './util'
 
 // 因为请求 header 属性是大小写不敏感的，
 // 比如我们之前的例子传入 header 的属性名 content-type 就是全小写的，
@@ -45,4 +45,19 @@ export function parseHeaders(headers: string): any {
   })
 
   return parsed
+}
+
+export function flattenHeaders(headers: any, method: Method): any {
+  if (!headers) {
+    return headers
+  }
+  headers = deepMerge(headers.common || {}, headers[method] || {}, headers)
+
+  const methodsToDelete = ['delete', 'get', 'head', 'options', 'post', 'put', 'patch', 'common']
+
+  methodsToDelete.forEach(method => {
+    delete headers[method]
+  })
+
+  return headers
 }
