@@ -6,17 +6,25 @@ import transform from './transform'
 import xhr from './xhr'
 
 function axios (config: AxiosRequestConfig): AxiosPromise {
+  throwIfCancellationRequested(config)
+
   processConfig(config)
   return xhr(config).then(res => {
     return transformResponseData(res)
   })
 }
 
+function throwIfCancellationRequested(config: AxiosRequestConfig): void {
+  if (config.cancelToken) {
+    config.cancelToken.throwIfRequested()
+  }
+}
+
 function processConfig (config: AxiosRequestConfig): void {
   config.url = transformUrl(config)
   config.headers = transformHeaders(config)
   // config.data = transformRequestData(config)  
-  console.log('8888888888',transform(config.data, config.headers, config.transformRequest))
+  // console.log('8888888888',transform(config.data, config.headers, config.transformRequest))
   config.data = transform(config.data, config.headers, config.transformRequest)
   config.headers = flattenHeaders(config.headers, config.method!)
 }
