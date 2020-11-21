@@ -223,7 +223,7 @@ function registerMoreRouter() {
 
 function registerUploadRouter() {
   router.post('/upload-download/upload', function (req, res) {
-    console.log(req.body, req.files)
+    console.log('/upload-download/upload', req.body, req.files)
     res.end('upload success!')
   })
 }

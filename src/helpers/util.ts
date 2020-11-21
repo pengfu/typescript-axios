@@ -67,3 +67,7 @@ function resolveURL(url: string): URLOrigin {
     host
   }
 }
+
+export function isFormData(val: any): boolean {
+  return typeof val !== 'undefined' && val instanceof FormData
+}
