@@ -1,3 +1,4 @@
+import { Method } from '../types'
 import { deepMerge, isPlainObject } from './util'
 
 // 因为请求 header 属性是大小写不敏感的，
@@ -33,14 +34,11 @@ export function parseHeaders(headers: string): any {
   }
 
   headers.split('\r\n').forEach(line => {
-    let [key, val] = line.split(':')
-    key = key.trim().toLowerCase()
-    if (!key) {
-      return
-    }
-    if (val) {
-      val = val.trim()
-    }
+    // 字符串可能存在多个 ":" 的情况
+    let [key, ...vals] = line.split(':')
+    key = key.trim().toLocaleLowerCase()
+    if (!key) return
+    const val = vals.join(':').trim()
     parsed[key] = val
   })
 

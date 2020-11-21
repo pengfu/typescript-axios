@@ -71,3 +71,7 @@ function resolveURL(url: string): URLOrigin {
 export function isFormData(val: any): boolean {
   return typeof val !== 'undefined' && val instanceof FormData
 }
+
+export function isURLSearchParams(val: any): val is URLSearchParams {
+  return typeof val !== undefined && val instanceof URLSearchParams
+}
