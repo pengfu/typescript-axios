@@ -31,15 +31,13 @@ export interface AxiosRequestConfig {
   xsrfHeaderName?: string
   onDownloadProgress?: (e: ProgressEvent) => void
   onUploadProgress?: (e: ProgressEvent) => void
-  
-
+  validateStatus?: (status: number) => boolean
 }
 
 export interface CancelToken {
   promise: Promise<Cancel>
   reason?: Cancel
   throwIfRequested(): void
-
 }
 
 export interface Canceler {
@@ -109,7 +107,7 @@ export interface AxiosInterceptorManager<T> {
   eject(id: number): void
 }
 
-export interface ResolvedFn<T=any> {
+export interface ResolvedFn<T = any> {
   (val: T): T | Promise<T>
 }
 
@@ -117,7 +115,7 @@ export interface RejectedFn {
   (error: any): any
 }
 
-export interface AxiosStatic extends AxiosInstance{
+export interface AxiosStatic extends AxiosInstance {
   create(config?: AxiosRequestConfig): AxiosInstance
 }
 
@@ -131,11 +129,11 @@ export interface Cancel {
 }
 
 export interface CancelStatic {
-  new(message?: string): Cancel
+  new (message?: string): Cancel
 }
 
 export interface CancelTokenStatic {
-  new(executor: CancelExecutor): CancelToken
+  new (executor: CancelExecutor): CancelToken
 
   source(): CancelTokenSource
 }
