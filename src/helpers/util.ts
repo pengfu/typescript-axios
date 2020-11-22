@@ -47,7 +47,6 @@ interface URLOrigin {
   host: string
 }
 
-
 export function isURLSameOrigin(requestURL: string): boolean {
   const parsedOrigin = resolveURL(requestURL)
   return (
@@ -73,5 +72,5 @@ export function isFormData(val: any): boolean {
 }
 
 export function isURLSearchParams(val: any): val is URLSearchParams {
-  return typeof val !== undefined && val instanceof URLSearchParams
+  return typeof val !== 'undefined' && val instanceof URLSearchParams
 }
