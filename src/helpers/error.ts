@@ -7,6 +7,7 @@ export class AxiosError extends Error {
   request?: any
   response?: AxiosResponse
 
+  /* istanbul ignore next */
   constructor(
     message: string,
     config: AxiosRequestConfig,
@@ -21,7 +22,7 @@ export class AxiosError extends Error {
     this.request = request
     this.response = response
     this.isAxiosError = true
-    
+
     // 为了解决 TypeScript 继承一些内置对象的时候的坑
     Object.setPrototypeOf(this, AxiosError.prototype)
   }
