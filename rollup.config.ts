@@ -7,7 +7,7 @@ import json from 'rollup-plugin-json'
 
 const pkg = require('./package.json')
 
-const libraryName = 'typescript-axios'
+const libraryName = 'awesome-typescript-axios'
 
 export default {
   input: `src/index.ts`,

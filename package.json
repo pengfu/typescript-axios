@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "description": "",
   "keywords": [],
-  "main": "dist/typescript-axios.umd.js",
-  "module": "dist/typescript-axios.es5.js",
+  "main": "dist/awesome-typescript-axios.umd.js",
+  "module": "dist/awesome-typescript-axios.es5.js",
   "typings": "dist/types/index.d.ts",
   "files": [
     "dist"
