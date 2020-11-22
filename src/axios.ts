@@ -10,7 +10,7 @@
 // 当直接调用 axios 方法就相当于执行了 Axios 类的 request 方法发送请求，
 // 当然我们也可以调用 axios.get、axios.post 等方法。
 
-import { AxiosInstance, AxiosRequestConfig, AxiosStatic } from './types'
+import { AxiosInstance, AxiosPromise, AxiosRequestConfig, AxiosStatic } from './types'
 import Axios from './core/Axios'
 import { extend } from './helpers/util'
 import defaults from './defaults'
@@ -29,8 +29,17 @@ function createInstance(config: AxiosRequestConfig): AxiosStatic {
 
 const axios = createInstance(defaults)
 
-axios.create = function create(config:AxiosRequestConfig) {
+axios.create = function create(config: AxiosRequestConfig) {
   return createInstance(mergeConfig(defaults, config))
+}
+axios.all = function all(promises: any) {
+  return Promise.all(promises)
+}
+
+axios.spread = function spread(callback: any) {
+  return function wrap(arr: any) {
+    return callback.apply(null, arr)
+  }
 }
 axios.Axios = Axios
 axios.CancelToken = CancelToken

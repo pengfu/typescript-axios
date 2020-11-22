@@ -127,6 +127,11 @@ export interface RejectedFn {
 
 export interface AxiosStatic extends AxiosInstance {
   create(config?: AxiosRequestConfig): AxiosInstance
+  all<T>(promises: Array<T | Promise<T>>): Promise<T[]>
+
+  spread<T, R>(callback: (...args: T[]) => R): (arr: T[]) => R
+
+  Axios: AxiosClassStatic
 }
 
 export interface CancelTokenSource {

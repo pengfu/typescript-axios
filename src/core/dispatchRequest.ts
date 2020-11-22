@@ -45,9 +45,9 @@ export function transformUrl(config: AxiosRequestConfig): string {
   return buildURL(url!, params, paramsSerializer)
 }
 
-function transformRequestData(config: AxiosRequestConfig): any {
-  return transformRequest(config.data)
-}
+// function transformRequestData(config: AxiosRequestConfig): any {
+//   return transformRequest(config.data)
+// }
 
 function transformHeaders(config: AxiosRequestConfig): any {
   const { headers = {}, data } = config
