@@ -34,6 +34,12 @@ export interface AxiosRequestConfig {
   validateStatus?: (status: number) => boolean
   baseURL?: string
   paramsSerializer?: (params: any) => string
+  auth?: AxiosBasicCredentials
+}
+
+export interface AxiosBasicCredentials {
+  username: string
+  password: string
 }
 
 export interface CancelToken {
