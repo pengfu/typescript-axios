@@ -37,7 +37,7 @@ function processConfig(config: AxiosRequestConfig): void {
   config.headers = flattenHeaders(config.headers, config.method!)
 }
 
-function transformUrl(config: AxiosRequestConfig): string {
+export function transformUrl(config: AxiosRequestConfig): string {
   let { url, params, paramsSerializer, baseURL } = config
   if (baseURL && !isAbsoluteURL(url!)) {
     url = combineURL(baseURL, url)
@@ -56,9 +56,9 @@ function transformHeaders(config: AxiosRequestConfig): any {
 
 function transformResponseData(res: AxiosResponse): AxiosResponse {
   // res.data = transformResponse(res.data)
-  console.log('transformResponseData---res.data', res.data)
-  console.log('transformResponseData---res.headers', res.headers)
-  console.log('transformResponseData---res.transformResponse', res.config.transformResponse)
+  // console.log('transformResponseData---res.data', res.data)
+  // console.log('transformResponseData---res.headers', res.headers)
+  // console.log('transformResponseData---res.transformResponse', res.config.transformResponse)
 
   res.data = transform(res.data, res.headers, res.config.transformResponse)
   return res
